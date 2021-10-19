@@ -7,26 +7,16 @@ let pokemonRepository = (function () {
       .then(response => {
         pokemonList = response.results;
         pokemonList.forEach(pokemon => {
-          let newPokemonList = document.querySelector(".pokemon-list");
-          let listItemPokemon = document.createElement("li");
-          let button = document.createElement("button");
-          button.innerText = pokemon.name;
-          button.classList.add("button-class");
-          button.addEventListener('click', function () {
             fetch(`https://pokeapi.co/api/v2/pokemon/${pokemon.name}`)
               .then(response => response.json())
               .then(response => {
-                console.log(response)
-                console.log(response.sprites.back_shiny)
-                let pokemonDetails = `Height: ${response.height}`
-                modal.showModal(`${pokemon.name}`, `${pokemonDetails}`, `${response.sprites.front_shiny}`);
+                let pokemonDetails = `Height: ${response.height},
+             Name: ${pokemon.name}, Image: ${response.sprites.front_shiny}`;
+                console.log(pokemonDetails)
               })
               .catch(err => console.error(err))
           });
-          listItemPokemon.appendChild(button);
-          newPokemonList.appendChild(listItemPokemon);
         })
-      })
       .catch(error => console.log(error))
   }
 
@@ -51,7 +41,6 @@ let pokemonRepository = (function () {
   };
 
 })();
-
 
 
 pokemonRepository.main();
