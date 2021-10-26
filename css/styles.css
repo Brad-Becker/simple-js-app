@@ -1,0 +1,15 @@
+ul {
+  list-style: none;
+}
+
+
+button.btn.btn-block {
+  font-size: 18px;
+  padding: 2px 4px;
+}
+
+html,
+body {
+  font-family: Arial, sans-serif;
+  text-align: center;
+}
